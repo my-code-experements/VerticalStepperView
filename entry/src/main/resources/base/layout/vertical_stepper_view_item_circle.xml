@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    xmlns:tools="http://schemas.huawei.com/res/tools"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:orientation="vertical">
+
+    <Text
+        ohos:id="$+id:vertical_stepper_view_item_circle_number"
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:visibility="hide"
+        tools:visibility="hide"
+        tools:text="1"
+        tools:text_size="52fp"
+
+        />
+    <Image
+        ohos:id="$+id:vertical_stepper_view_item_circle_icon"
+        ohos:image_src="$graphic:vertical_stepper_view_item_circle_active"
+        ohos:height="16vp"
+        ohos:width="16vp"
+        ohos:visibility="hide"
+        tools:visibility="visible"
+
+        />
+
+</DirectionalLayout>
