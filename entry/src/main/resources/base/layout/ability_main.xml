@@ -5,7 +5,6 @@
     ohos:width="match_parent"
     ohos:alignment="center"
     ohos:orientation="vertical"
-    ohos:background_element="#ddd"
     ohos:id="$+id:mainComponent"
     >
     <com.liefery.android.vertical_stepper_view.VerticalStepperView

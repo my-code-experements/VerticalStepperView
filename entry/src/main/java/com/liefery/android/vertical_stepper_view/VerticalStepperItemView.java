@@ -145,8 +145,8 @@ public class VerticalStepperItemView extends StackLayout implements Component.Dr
 
         title.setTextColor(new Color(getContext().getColor(ResourceTable.Color_vertical_stepper_view_black_38)));
 //        title.setTypeface(title.getTypeface(), Typeface.NORMAL);
-        summary.setVisibility(INVISIBLE);
-        contentWrapper.setVisibility(INVISIBLE);
+        summary.setVisibility(HIDE);
+        contentWrapper.setVisibility(HIDE);
     }
 
 
@@ -157,7 +157,7 @@ public class VerticalStepperItemView extends StackLayout implements Component.Dr
         circle.setBackgroundActive();
         title.setTextColor(new Color(getContext().getColor(ResourceTable.Color_vertical_stepper_view_black_87)));
 //        title.setTypeface( title.getTypeface(), Typeface.BOLD );
-        summary.setVisibility(INVISIBLE);
+        summary.setVisibility(HIDE);
         contentWrapper.setVisibility(VISIBLE);
     }
 
@@ -171,10 +171,9 @@ public class VerticalStepperItemView extends StackLayout implements Component.Dr
             circle.setIconCheck();
 
         title.setTextColor(new Color(getContext().getColor(ResourceTable.Color_vertical_stepper_view_black_87)));
-
 //        title.setTypeface( title.getTypeface(), Typeface.BOLD );
-        summary.setVisibility(summary.getText().isEmpty() ? INVISIBLE : VISIBLE);
-        contentWrapper.setVisibility(INVISIBLE);
+        summary.setVisibility(summary.getText().isEmpty() ? HIDE : VISIBLE);
+        contentWrapper.setVisibility(HIDE);
     }
 
     private void setMarginBottom(boolean active) {

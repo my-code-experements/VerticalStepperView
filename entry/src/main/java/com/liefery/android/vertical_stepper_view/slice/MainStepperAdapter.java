@@ -8,6 +8,9 @@ import ohos.app.Context;
 import ohos.hiviewdfx.HiLog;
 import ohos.hiviewdfx.HiLogLabel;
 
+import static ohos.agp.components.Component.INVISIBLE;
+import static ohos.agp.components.Component.VISIBLE;
+
 public class MainStepperAdapter extends VerticalStepperAdapter {
     private static final HiLogLabel LABEL_LOG = new HiLogLabel(HiLog.LOG_APP
             , 0x00201, "-MainAbility-");
@@ -29,7 +32,7 @@ public class MainStepperAdapter extends VerticalStepperAdapter {
 
     @Override
     public boolean isEditable(int position) {
-        return position == 1;
+        return position == 0;
     }
 
     @Override
@@ -47,13 +50,13 @@ public class MainStepperAdapter extends VerticalStepperAdapter {
         Component content = new MainItemView(context);
         Button actionContinue = (Button) content.findComponentById(ResourceTable.Id_action_continue);
         HiLog.warn(LABEL_LOG, "MainStepperAdapter: actionContinue: "+actionContinue);
-        actionContinue.setEnabled(position < getCount() - 1);
+        actionContinue.setVisibility((position < getCount() - 1)?VISIBLE:INVISIBLE);
         actionContinue.setClickedListener(component -> {
             next();
         });
 
         Button actionBack = (Button) content.findComponentById(ResourceTable.Id_action_back);
-        actionBack.setEnabled(position > 0);
+        actionBack.setVisibility(position > 0?VISIBLE:INVISIBLE);
         actionBack.setClickedListener(component -> {
             previous();
         });

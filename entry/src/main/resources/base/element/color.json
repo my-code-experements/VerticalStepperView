@@ -9,6 +9,9 @@
     },{
       "name": "vertical_stepper_view_black_38",
       "value": "#61000000"
+    },{
+      "name": "white",
+      "value": "#ffffff"
     }
   ]
 }

@@ -5,6 +5,8 @@ import ohos.agp.components.Component;
 import ohos.agp.components.ComponentContainer;
 import ohos.agp.components.ComponentParent;
 import ohos.app.Context;
+import ohos.hiviewdfx.HiLog;
+import ohos.hiviewdfx.HiLogLabel;
 import ohos.utils.PlainArray;
 
 import java.util.Optional;
@@ -13,6 +15,9 @@ import static com.liefery.android.vertical_stepper_view.VerticalStepperItemView.
 
 
 public abstract class VerticalStepperAdapter extends BaseItemProvider {
+    private static final HiLogLabel LABEL_LOG = new HiLogLabel(HiLog.LOG_APP
+            , 0x00201, "-MainAbility-");
+
     private int focus = 0;
 
 
@@ -43,6 +48,7 @@ public abstract class VerticalStepperAdapter extends BaseItemProvider {
     }
 
     private Component getContentView(Context context, int position) {
+        HiLog.warn(LABEL_LOG, "VerticalStepperAdapter: getContentView");
         int id = (int) getItemId(position);
         Optional<Component> contentView = contentViews.get(id);
 
@@ -61,10 +67,8 @@ public abstract class VerticalStepperAdapter extends BaseItemProvider {
         notifyDataSetItemChanged(position);
     }
 
-    private void applyData(
-            Context context,
-            VerticalStepperItemView itemView,
-            int position) {
+    private void applyData(Context context, VerticalStepperItemView itemView, int position) {
+        HiLog.warn(LABEL_LOG, "VerticalStepperAdapter: applyData("+position);
         Component currentContentView = itemView.getContentView();
         Component contentView = getContentView(context, position);
 
@@ -93,7 +97,8 @@ public abstract class VerticalStepperAdapter extends BaseItemProvider {
     public void jumpTo(int position) {
         if (focus != position) {
             focus = position;
-            notifyDataSetItemChanged(position);
+            notifyDataChanged();
+//            notifyDataSetItemChanged(position);
         }
     }
 
@@ -102,19 +107,21 @@ public abstract class VerticalStepperAdapter extends BaseItemProvider {
     }
 
 
-    public void previous() {
-        if (hasPrevious()) {
-            jumpTo(focus - 1);
-        }
-    }
-
     public boolean hasNext() {
         return focus < getCount() - 1;
     }
 
 
+    public void previous() {
+        if (hasPrevious()) {
+            HiLog.warn(LABEL_LOG, "VerticalStepperAdapter: previous");
+            jumpTo(focus - 1);
+        }
+    }
+
     public void next() {
         if (hasNext()) {
+            HiLog.warn(LABEL_LOG, "VerticalStepperAdapter: next");
             jumpTo(focus + 1);
         }
     }
@@ -143,10 +150,10 @@ public abstract class VerticalStepperAdapter extends BaseItemProvider {
         VerticalStepperItemView itemView;
         if (convertComponent == null) {
             itemView = new VerticalStepperItemView(context);
-        }else{
+        } else {
             itemView = (VerticalStepperItemView) convertComponent;
         }
-        applyData(context,itemView,position);
+        applyData(context, itemView, position);
         return itemView;
     }
     //#endregion overrides

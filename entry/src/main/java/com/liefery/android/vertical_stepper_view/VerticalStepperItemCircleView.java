@@ -42,8 +42,7 @@ public class VerticalStepperItemCircleView extends StackLayout {
         try {
             ShapeElement shapeElement = new ShapeElement();
             shapeElement.setShape(ShapeElement.OVAL);
-            shapeElement.setRgbColor(new RgbColor(0, 0, 0));
-
+            shapeElement.setRgbColor(new RgbColor(76, 175, 80));
             setBackground(shapeElement);
 
         } catch (Exception e) {
@@ -55,7 +54,7 @@ public class VerticalStepperItemCircleView extends StackLayout {
         try {
             ShapeElement shapeElement = new ShapeElement();
             shapeElement.setShape(ShapeElement.OVAL);
-            shapeElement.setRgbColor(new RgbColor(255, 255, 255));
+            shapeElement.setRgbColor(new RgbColor(158, 158, 158));
 
             setBackground(shapeElement);
         } catch (Exception e) {
@@ -64,7 +63,7 @@ public class VerticalStepperItemCircleView extends StackLayout {
     }
 
     public void setNumber(int value) {
-        icon.setVisibility(INVISIBLE);
+        icon.setVisibility(HIDE);
         number.setVisibility(VISIBLE);
         number.setText(String.valueOf(value));
     }
@@ -75,8 +74,9 @@ public class VerticalStepperItemCircleView extends StackLayout {
     public void setIconEdit() {
         setIconResource( ResourceTable.Media_icon_edit_white_18dp );
     }
+
     public void setIconResource(int id) {
-        number.setVisibility(INVISIBLE);
+        number.setVisibility(HIDE);
         icon.setVisibility(VISIBLE);
         icon.setImageAndDecodeBounds(id);
     }
