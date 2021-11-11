@@ -3,12 +3,6 @@
     xmlns:ohos="http://schemas.huawei.com/res/ohos"
     ohos:shape="oval">
 
-<!--    <size-->
-<!--        ohos:width="24dp"-->
-<!--        ohos:height="24dp" />-->
-
-    <!-- To be set to ?colorPrimary programmatically for compatibility reasons -->
-
-    <solid ohos:color="$color:vertical_stepper_view_black_87" />
+    <solid ohos:color="#DE02CF54" />
 
 </shape>

@@ -2,11 +2,16 @@ package com.liefery.android.vertical_stepper_view;
 
 import ohos.agp.colors.RgbColor;
 import ohos.agp.components.*;
+import ohos.agp.components.element.Element;
+import ohos.agp.components.element.ElementScatter;
 import ohos.agp.components.element.ShapeElement;
 import ohos.app.Context;
-import ohos.global.resource.Element;
+import ohos.hiviewdfx.HiLog;
+import ohos.hiviewdfx.HiLogLabel;
 
 public class VerticalStepperItemCircleView extends StackLayout {
+    private static final HiLogLabel LABEL_LOG = new HiLogLabel(HiLog.LOG_APP
+            , 0x00201, "-MainAbility-");
     Text number;
     Image icon;
     int size;
@@ -39,26 +44,25 @@ public class VerticalStepperItemCircleView extends StackLayout {
     }
 
     public void setBackgroundActive() {
+
         try {
-            ShapeElement shapeElement = new ShapeElement();
-            shapeElement.setShape(ShapeElement.OVAL);
-            shapeElement.setRgbColor(new RgbColor(76, 175, 80));
+            Element shapeElement = ElementScatter.getInstance(getContext()).parse(ResourceTable.Graphic_vertical_stepper_view_item_circle_active);
             setBackground(shapeElement);
 
         } catch (Exception e) {
             e.printStackTrace();
+            HiLog.warn(LABEL_LOG, "VerticalStepperItemCircleView: setBackgroundActive"+e);
         }
     }
 
     public void setBackgroundInactive() {
         try {
-            ShapeElement shapeElement = new ShapeElement();
-            shapeElement.setShape(ShapeElement.OVAL);
-            shapeElement.setRgbColor(new RgbColor(158, 158, 158));
+            Element shapeElement = ElementScatter.getInstance(getContext()).parse(ResourceTable.Graphic_vertical_stepper_view_item_circle_inactive);
 
             setBackground(shapeElement);
         } catch (Exception e) {
             e.printStackTrace();
+            HiLog.warn(LABEL_LOG, "VerticalStepperItemCircleView: setBackgroundInactive"+e);
         }
     }
 

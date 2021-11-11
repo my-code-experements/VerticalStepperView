@@ -203,6 +203,7 @@ public class VerticalStepperItemView extends StackLayout implements Component.Dr
     public void onRefreshed(Component component) {
         HiLog.warn(LABEL_LOG, "VerticalStepperItemView: onRefreshed");
         connector.adjust(getContext(), component.getWidth(), component.getHeight(), number);
+
         component.invalidate();
     }
 }
