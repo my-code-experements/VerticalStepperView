@@ -1,6 +1,8 @@
 package com.liefery.android.vertical_stepper_view;
 
+import ohos.agp.colors.RgbColor;
 import ohos.agp.components.*;
+import ohos.agp.components.element.ShapeElement;
 import ohos.agp.render.Canvas;
 import ohos.agp.utils.Color;
 import ohos.app.Context;
@@ -10,7 +12,8 @@ import ohos.hiviewdfx.HiLogLabel;
 import static ohos.agp.components.ComponentContainer.LayoutConfig.MATCH_CONTENT;
 import static ohos.agp.components.ComponentContainer.LayoutConfig.MATCH_PARENT;
 
-public class VerticalStepperItemView extends StackLayout implements Component.DrawTask, Component.LayoutRefreshedListener {
+public class VerticalStepperItemView extends StackLayout implements
+        Component.DrawTask, Component.LayoutRefreshedListener, Component.EstimateSizeListener {
     private static final HiLogLabel LABEL_LOG = new HiLogLabel(HiLog.LOG_APP
             , 0x00201, "-MainAbility-");
     //#region static variables
@@ -42,6 +45,7 @@ public class VerticalStepperItemView extends StackLayout implements Component.Dr
         initialize(context);
     }
 
+    //#endregion constructor
     public VerticalStepperItemView(Context context, AttrSet attrSet) {
         super(context, attrSet);
         initialize(context);
@@ -52,12 +56,11 @@ public class VerticalStepperItemView extends StackLayout implements Component.Dr
         initialize(context);
     }
 
-    //#endregion constructor
-
     private void initialize(Context context) {
         setClipEnabled(false);
         addDrawTask(this);
         setLayoutRefreshedListener(this);
+        setEstimateSizeListener(this);
 
 
         int padding = Util.dpToPx(context, 8);
@@ -192,7 +195,6 @@ public class VerticalStepperItemView extends StackLayout implements Component.Dr
             params.setMarginBottom(Util.dpToPx(getContext(), 40));
     }
 
-
     @Override
     public void onDraw(Component component, Canvas canvas) {
         HiLog.warn(LABEL_LOG, "VerticalStepperItemView: onDraw");
@@ -204,6 +206,21 @@ public class VerticalStepperItemView extends StackLayout implements Component.Dr
         HiLog.warn(LABEL_LOG, "VerticalStepperItemView: onRefreshed");
         connector.adjust(getContext(), component.getWidth(), component.getHeight(), number);
 
-        component.invalidate();
+//        component.invalidate();
     }
+
+    @Override
+    public boolean onEstimateSize(int widthEstimateConfig, int heightEstimateConfig) {
+
+        HiLog.warn(LABEL_LOG, "onEstimateSize method called");
+        int width = widthEstimateConfig;
+        int height = heightEstimateConfig;
+        HiLog.warn(LABEL_LOG, "VerticalStepperItemView:" + "onEstimateSize method Width: " + width + " Height: " + height);
+
+        //Do Size Estimation here and don't forgot to call setEstimatedSize(width, height)
+        setEstimatedSize(500,                500);
+
+        return true;
+    }
+
 }

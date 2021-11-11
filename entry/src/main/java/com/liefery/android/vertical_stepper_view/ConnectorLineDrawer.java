@@ -59,11 +59,11 @@ class ConnectorLineDrawer {
     }
 
     void draw(Canvas canvas) {
-        HiLog.warn(LABEL_LOG, "ConnectorLineDrawer: draw");
-        if (shouldRedraw) {
+//        HiLog.warn(LABEL_LOG, "ConnectorLineDrawer: draw");
+//        if (shouldRedraw) {
             HiLog.warn(LABEL_LOG, "ConnectorLineDrawer: draw");
             canvas.drawRect(line, paint);
-        }
+//        }
 
     }
 
