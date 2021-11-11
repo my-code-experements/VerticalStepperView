@@ -4,11 +4,15 @@ import ohos.agp.components.*;
 import ohos.agp.render.Canvas;
 import ohos.agp.utils.Color;
 import ohos.app.Context;
+import ohos.hiviewdfx.HiLog;
+import ohos.hiviewdfx.HiLogLabel;
 
 import static ohos.agp.components.ComponentContainer.LayoutConfig.MATCH_CONTENT;
 import static ohos.agp.components.ComponentContainer.LayoutConfig.MATCH_PARENT;
 
-public class VerticalStepperItemView extends StackLayout implements Component.DrawTask {
+public class VerticalStepperItemView extends StackLayout implements Component.DrawTask, Component.LayoutRefreshedListener {
+    private static final HiLogLabel LABEL_LOG = new HiLogLabel(HiLog.LOG_APP
+            , 0x00201, "-MainAbility-");
     //#region static variables
     public static int STATE_ACTIVE = 1;
     public static int STATE_COMPLETE = 2;
@@ -52,6 +56,8 @@ public class VerticalStepperItemView extends StackLayout implements Component.Dr
 
     private void initialize(Context context) {
         setClipEnabled(false);
+        addDrawTask(this);
+        setLayoutRefreshedListener(this);
 
 
         int padding = Util.dpToPx(context, 8);
@@ -145,7 +151,7 @@ public class VerticalStepperItemView extends StackLayout implements Component.Dr
 
         title.setTextColor(new Color(getContext().getColor(ResourceTable.Color_vertical_stepper_view_black_38)));
 //        title.setTypeface(title.getTypeface(), Typeface.NORMAL);
-        summary.setVisibility(HIDE);
+        summary.setVisibility(INVISIBLE);
         contentWrapper.setVisibility(HIDE);
     }
 
@@ -186,8 +192,17 @@ public class VerticalStepperItemView extends StackLayout implements Component.Dr
             params.setMarginBottom(Util.dpToPx(getContext(), 40));
     }
 
+
     @Override
     public void onDraw(Component component, Canvas canvas) {
+        HiLog.warn(LABEL_LOG, "VerticalStepperItemView: onDraw");
         if (showConnectorLine) connector.draw(canvas);
+    }
+
+    @Override
+    public void onRefreshed(Component component) {
+        HiLog.warn(LABEL_LOG, "VerticalStepperItemView: onRefreshed");
+        connector.adjust(getContext(), component.getWidth(), component.getHeight(), number);
+        component.invalidate();
     }
 }

@@ -48,7 +48,7 @@ public abstract class VerticalStepperAdapter extends BaseItemProvider {
     }
 
     private Component getContentView(Context context, int position) {
-        HiLog.warn(LABEL_LOG, "VerticalStepperAdapter: getContentView");
+//        HiLog.warn(LABEL_LOG, "VerticalStepperAdapter: getContentView");
         int id = (int) getItemId(position);
         Optional<Component> contentView = contentViews.get(id);
 
@@ -68,7 +68,7 @@ public abstract class VerticalStepperAdapter extends BaseItemProvider {
     }
 
     private void applyData(Context context, VerticalStepperItemView itemView, int position) {
-        HiLog.warn(LABEL_LOG, "VerticalStepperAdapter: applyData("+position);
+//        HiLog.warn(LABEL_LOG, "VerticalStepperAdapter: applyData("+position);
         Component currentContentView = itemView.getContentView();
         Component contentView = getContentView(context, position);
 

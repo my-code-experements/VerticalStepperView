@@ -49,7 +49,7 @@ public class MainStepperAdapter extends VerticalStepperAdapter {
     public Component onCreateContentView(Context context, int position) {
         Component content = new MainItemView(context);
         Button actionContinue = (Button) content.findComponentById(ResourceTable.Id_action_continue);
-        HiLog.warn(LABEL_LOG, "MainStepperAdapter: actionContinue: "+actionContinue);
+//        HiLog.warn(LABEL_LOG, "MainStepperAdapter: actionContinue: "+actionContinue);
         actionContinue.setVisibility((position < getCount() - 1)?VISIBLE:INVISIBLE);
         actionContinue.setClickedListener(component -> {
             next();

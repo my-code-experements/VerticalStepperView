@@ -6,7 +6,7 @@
     ohos:orientation="vertical">
 
     <DirectionalLayout
-        ohos:height="200vp"
+        ohos:height="120vp"
         ohos:width="match_parent"
         ohos:alignment="center"
         ohos:background_element="#a3a3a3">
@@ -14,7 +14,7 @@
         <TextField
             ohos:id="$+id:input"
             ohos:height="match_content"
-            ohos:width="150vp"
+            ohos:width="120vp"
             ohos:hint="Give Me state"
             ohos:text_size="24fp"/>
     </DirectionalLayout>
@@ -32,7 +32,8 @@
             ohos:text_size="24fp"
             ohos:background_element="#FF0E86D7"
             ohos:padding="6vp"
-            ohos:margin="6vp"/>
+            ohos:margin="6vp"
+            />
 
         <Button
             ohos:id="$+id:action_back"
